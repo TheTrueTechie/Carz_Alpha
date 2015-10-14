@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class startScreen implements ActionListener {
@@ -14,7 +15,10 @@ public class startScreen implements ActionListener {
 
 	private JButton startButton;
 	private JButton helpButton;
+	private JButton creditsButton;
 	private JButton endButton;
+
+	gameController a = new gameController();
 
 	public static void main(String[] args) {
 		new startScreen();
@@ -26,6 +30,7 @@ public class startScreen implements ActionListener {
 
 		startButton = new JButton();
 		helpButton = new JButton();
+		creditsButton = new JButton();
 		endButton = new JButton();
 
 		startCode();
@@ -39,16 +44,19 @@ public class startScreen implements ActionListener {
 
 		startButton.addActionListener(this);
 		helpButton.addActionListener(this);
+		creditsButton.addActionListener(this);
 		endButton.addActionListener(this);
-		
+
 		mainPanel.add(startButton);
 		mainPanel.add(helpButton);
+		mainPanel.add(creditsButton);
 		mainPanel.add(endButton);
 
 		startButton.setText("Start");
 		helpButton.setText("Help");
+		creditsButton.setText("Credits");
 		endButton.setText("Exit");
-		
+
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		mainFrame.setVisible(true);
@@ -76,15 +84,18 @@ public class startScreen implements ActionListener {
 		}
 	}
 
-	@Override
 	public void actionPerformed(ActionEvent arg0) {
 
 		if (startButton == arg0.getSource()) {
 
 		}
 
-		if (helpButton == arg0.getSource()) {
+		if (creditsButton == arg0.getSource()) {
+			JOptionPane.showMessageDialog(null, "Coded by ©TheTrueTechies");
+		}
 
+		if (helpButton == arg0.getSource()) {
+			JOptionPane.showMessageDialog(null, "Use WASD to control car. W to move forward, S to move backwards, A to move left, D to move right");
 		}
 
 		if (endButton == arg0.getSource()) {
