@@ -1,5 +1,10 @@
 public class carObject {
-	public static void main(String[] args) {
+	String color;
+	
+	int speed;
+	int direction; 
+	int IMAGE; 
+	carObject() {
 
 	}
 }
