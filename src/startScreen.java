@@ -24,6 +24,12 @@ public class startScreen implements ActionListener {
 	private JButton creditsButton;
 	private JButton endButton;
 
+	int carX;
+	int carY;
+	int five = 5;
+
+	public carObject mainCar = new carObject(500, 500, 50, 17);
+
 	public static void main(String[] args) {
 		new startScreen();
 	}
@@ -68,10 +74,10 @@ public class startScreen implements ActionListener {
 	}
 
 	public void gameScreen() {
-		setBackground2(); 
-		
 		gameFrame = new JFrame();
 		gamePanel = new JFrame();
+
+		setBackground2();
 
 		gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		gameFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -100,17 +106,25 @@ public class startScreen implements ActionListener {
 		}
 	}
 
-
 	private void setBackground2() {
+		System.out.println(gameFrame);
 		try {
 			gameFrame.setContentPane(new JPanel() {
 				BufferedImage backgroundImage = ImageIO.read(this.getClass()
 						.getResourceAsStream("carzCity.png"));
 
+				BufferedImage carImage = ImageIO.read(this.getClass()
+						.getResourceAsStream("carDefault.png"));
+
 				public void paintComponent(Graphics g) {
 					super.paintComponent(g);
 					g.drawImage(backgroundImage, 0, 0, gameFrame.getWidth(),
 							gameFrame.getHeight(), this);
+					g.drawImage(
+							carImage, mainCar.x, mainCar.y,
+							mainCar.sizeW, mainCar.sizeH, this);
+					
+					//mainCar.xMove();
 				}
 			}
 
@@ -122,6 +136,7 @@ public class startScreen implements ActionListener {
 
 		}
 	}
+
 	public void actionPerformed(ActionEvent arg0) {
 
 		if (startButton == arg0.getSource()) {
